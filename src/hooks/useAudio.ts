@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
+import { parseTimeRanges } from '@app/utils';
+
 export interface HTMLMediaProps {
   autoPlay?: boolean | undefined;
   controls?: boolean | undefined;
@@ -31,19 +33,6 @@ export interface HTMLMediaControls {
   volume: (volume: number) => void;
   seek: (time: number) => void;
 }
-
-const parseTimeRanges = (ranges: TimeRanges) => {
-  const result: { start: number; end: number }[] = [];
-
-  for (let i = 0; i < ranges.length; i++) {
-    result.push({
-      start: ranges.start(i),
-      end: ranges.end(i),
-    });
-  }
-
-  return result;
-};
 
 export const useAudio = (props: HTMLMediaProps) => {
   const [state, setState] = useState<HTMLMediaState>({
