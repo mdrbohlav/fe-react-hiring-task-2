@@ -16,7 +16,7 @@ export interface HTMLMediaProps {
 }
 
 export interface HTMLMediaState {
-  buffered: any[];
+  buffered: { start: number; end: number }[];
   duration: number;
   paused: boolean;
   muted: boolean;
