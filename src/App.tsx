@@ -1,10 +1,10 @@
 import { type FC, useRef, useState } from 'react';
-import { useAudio } from 'react-use';
 import { CameraControls, ContactShadows } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 
 import { Model } from '@app/components';
 import { messageToPlay } from '@app/constants';
+import { useAudio } from '@app/hooks';
 
 const App: FC = () => {
   const cameraControls = useRef<CameraControls>(null);
@@ -14,7 +14,7 @@ const App: FC = () => {
   const audioUrl =
     messageToPlay?.audioUrl ?? (messageToPlay?.audio ? `data:audio/mp3;base64,${messageToPlay?.audio}` : '');
 
-  const [audioElement, targetAudioSoundState, targetAudioControls] = useAudio({
+  const [targetAudioSoundState, targetAudioControls] = useAudio({
     src: audioUrl || '',
   });
 
@@ -42,8 +42,6 @@ const App: FC = () => {
 
   return (
     <div className="h-screen w-screen">
-      {audioElement}
-
       <button className="absolute left-4 top-4 z-10 rounded bg-gray-900 px-4 py-2 text-gray-100" onClick={toggleAudio}>
         {targetAudioSoundState.paused ? 'Play audio' : 'Stop audio'}
       </button>
