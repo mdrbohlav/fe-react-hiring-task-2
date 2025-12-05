@@ -3,15 +3,15 @@ import { useState, useEffect, useRef } from 'react';
 import { parseTimeRanges } from '@app/utils';
 
 export interface HTMLMediaProps {
-  autoPlay?: boolean | undefined;
-  controls?: boolean | undefined;
-  controlsList?: string | undefined;
-  crossOrigin?: 'anonymous' | 'use-credentials' | '' | undefined;
-  loop?: boolean | undefined;
-  mediaGroup?: string | undefined;
-  muted?: boolean | undefined;
-  playsInline?: boolean | undefined;
-  preload?: string | undefined;
+  autoPlay?: boolean;
+  controls?: boolean;
+  controlsList?: string;
+  crossOrigin?: 'anonymous' | 'use-credentials' | '';
+  loop?: boolean;
+  mediaGroup?: string;
+  muted?: boolean;
+  playsInline?: boolean;
+  preload?: string;
   src: string;
 }
 
